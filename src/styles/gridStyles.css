@@ -1,0 +1,40 @@
+:root {
+  --moveRange: #25a9f5;
+}
+.cell {
+  border: 1px solid black;
+  display: inline-flex;
+  height: 12vh;
+  width: 12vh;
+  content: '';
+}
+.gridRow {
+  display: flex;
+  margin: 0px;
+}
+.highlight {
+  cursor: pointer;
+}
+.highlight::before {
+  content: '';
+  background: var(--moveRange);
+  opacity: 0.3;
+  height: 12vh;
+  width: 12vh;
+  content: '';
+}
+.active.highlight::before {
+  opacity: 1;
+}
+.active {
+  background-color: var(--moveRange);
+}
+.gameBoard {
+  display: inline-block;
+  border: 1px solid black;
+  background: url('https://media.istockphoto.com/photos/seamless-modern-handmade-polluted-light-gray-handmade-paper-with-picture-id922759926?k=6&m=922759926&s=612x612&w=0&h=eAyaJuNM_bFpDK5a43fk9D9F9BOCDDy7E0xr9Ht3YV8=');
+}
+.barrier {
+  background-color: grey;
+  opacity: 1;
+}
