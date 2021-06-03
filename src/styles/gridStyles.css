@@ -1,15 +1,17 @@
 :root {
-  --moveRange: #25a9f5;
+  --blue: #25a9f5;
+  --red: #ca2b0f;
+  --movementOverlay: #ffbb00;
 }
 .cell {
   border: 1px solid black;
   display: inline-flex;
   height: 12vh;
   width: 12vh;
-  content: '';
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 2rem;
+  content: "";
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 1.5rem;
   align-items: center;
   justify-content: center;
   font-weight: bold;
@@ -22,18 +24,44 @@
 .highlight,
 .active {
   cursor: pointer;
-  background: var(--moveRange);
-  opacity: 0.3;
+  opacity: 1;
+}
+.player {
+  cursor: pointer;
   color: white;
 }
 
+.active::before {
+  height: 12vh;
+  width: 12vh;
+  /* opacity: 0.3; */
+  content: "";
+  position: absolute;
+  border: 2px solid black;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+  /* background-color: var(--movementOverlay); */
+}
+.highlight::before {
+  height: 12vh;
+  width: 12vh;
+  opacity: 0.3;
+  content: "";
+  position: absolute;
+  background-color: var(--movementOverlay);
+}
+.blue {
+  background-color: var(--blue);
+}
+.red {
+  background-color: var(--red);
+}
 .active {
-  opacity: 0.9;
+  opacity: 1;
 }
 .gameBoard {
   display: inline-block;
   border: 1px solid black;
-  background: url('https://media.istockphoto.com/photos/seamless-modern-handmade-polluted-light-gray-handmade-paper-with-picture-id922759926?k=6&m=922759926&s=612x612&w=0&h=eAyaJuNM_bFpDK5a43fk9D9F9BOCDDy7E0xr9Ht3YV8=');
+  background: url("https://media.istockphoto.com/photos/seamless-modern-handmade-polluted-light-gray-handmade-paper-with-picture-id922759926?k=6&m=922759926&s=612x612&w=0&h=eAyaJuNM_bFpDK5a43fk9D9F9BOCDDy7E0xr9Ht3YV8=");
 }
 .barrier {
   background-color: grey;
