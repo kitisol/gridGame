@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import GridBlock from "./GridBlock";
-import "../styles/gridStyles.css";
+import React, { useState } from 'react';
+import GridBlock from './GridBlock';
+import '../styles/gridStyles.css';
 
 export default function Grid(props) {
   const defaultStart = {
@@ -12,40 +12,40 @@ export default function Grid(props) {
   const [selectedPlayer, setSelectedPlayer] = useState(defaultStart);
   const [players, setPlayers] = useState({
     p1: {
-      name: "Testy",
+      name: 'Kilo',
       id: 'p1',
       movement: 2,
-      team: "blue",
+      team: 'blue',
       location: {
         x: 0,
         y: 0,
       },
     },
     p2: {
-      name: "Besty",
+      name: 'Victor',
       id: 'p2',
       movement: 3,
-      team: "blue",
+      team: 'blue',
       location: {
         x: 1,
         y: 0,
       },
     },
     p3: {
-      name: "Ready",
+      name: 'Lima',
       id: 'p3',
       movement: 3,
-      team: "red",
+      team: 'red',
       location: {
         x: 3,
         y: 5,
       },
     },
     p4: {
-      name: "Rusty",
+      name: 'Xray',
       id: 'p4',
       movement: 1,
-      team: "red",
+      team: 'red',
       location: {
         x: 2,
         y: 5,
@@ -69,22 +69,27 @@ export default function Grid(props) {
     selectedPlayer.movement
   );
   const onCellClick = (location, cell) => {
-    if (cell.type === "player") {
+    if (cell.type === 'player') {
       if (matchLocation(cell.data.location, selectedPlayer.location)) {
         setSelectedPlayer(defaultStart);
-      } 
-      else {
+      } else {
         setSelectedPlayer(cell.data);
       }
     } else if (locationInList(location, candidates)) {
-      setSelectedPlayer(prevState => {
-        return { ...prevState, location: location }
+      setSelectedPlayer((prevState) => {
+        return { ...prevState, location: location };
       });
-      setPlayers(prevState => {
-        return { ...prevState, [selectedPlayer.id]: {...prevState[selectedPlayer.id], location: location} }
+      setPlayers((prevState) => {
+        return {
+          ...prevState,
+          [selectedPlayer.id]: {
+            ...prevState[selectedPlayer.id],
+            location: location,
+          },
+        };
       });
-    }
-    else {
+      setSelectedPlayer(defaultStart);
+    } else {
       setSelectedPlayer(defaultStart);
     }
   };
@@ -105,13 +110,13 @@ export default function Grid(props) {
       );
     }
     grid.push(
-      <div key={`row${i}`} className='gridRow'>
+      <div key={`row${i}`} className="gridRow">
         {row}
       </div>
     );
   }
   return (
-    <div className='gameBoard' key={"gameboard"}>
+    <div className="gameBoard" key={'gameboard'}>
       {grid}
     </div>
   );
@@ -123,12 +128,12 @@ function findOpenPositions(location, field, range) {
       candidates = candidates.concat(checkNear(candidate, field));
     });
   }
-  const shortList = [] 
-  candidates.forEach(item => {
-    if(!locationInList(item, shortList) && !matchLocation(location, item)){
-      shortList.push(item)
+  const shortList = [];
+  candidates.forEach((item) => {
+    if (!locationInList(item, shortList) && !matchLocation(location, item)) {
+      shortList.push(item);
     }
-  })
+  });
   return shortList;
 }
 function checkNear(location, field) {
@@ -170,14 +175,14 @@ function locationInList(location, locationList) {
 }
 function determineCellType(location, players, field) {
   const playerList = Object.keys(players);
-  let cellContent = { type: "cell" };
+  let cellContent = { type: 'cell' };
   if (locationInList(location, field.barriers)) {
-    cellContent = { type: "barrier", data: "" };
+    cellContent = { type: 'barrier', data: '' };
   }
   for (let i = 0; i < playerList.length; i++) {
     const player = players[playerList[i]];
     if (matchLocation(location, player.location)) {
-      cellContent = { type: "player", data: player };
+      cellContent = { type: 'player', data: player };
     }
   }
   return cellContent;
