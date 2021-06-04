@@ -59,6 +59,7 @@ export default function Grid(props) {
       { x: 2, y: 4 },
       { x: 3, y: 4 },
     ],
+    players: players,
     width: 4,
     height: 6,
   };
@@ -130,7 +131,11 @@ function findOpenPositions(location, field, range) {
   }
   const shortList = [];
   candidates.forEach((item) => {
-    if (!locationInList(item, shortList) && !matchLocation(location, item)) {
+    if (
+      !locationInList(item, shortList) &&
+      !matchLocation(location, item) &&
+      !locationInList(item, getAllPlayerLocations(field.players))
+    ) {
       shortList.push(item);
     }
   });
@@ -186,4 +191,12 @@ function determineCellType(location, players, field) {
     }
   }
   return cellContent;
+}
+function getAllPlayerLocations(players) {
+  const keys = Object.keys(players);
+  const locations = [];
+  keys.forEach((key) => {
+    locations.push(players[key].location);
+  });
+  return locations;
 }
