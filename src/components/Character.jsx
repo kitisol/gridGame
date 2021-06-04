@@ -5,11 +5,9 @@ import xray from "../assets/characters/xray.png";
 import lima from "../assets/characters/lima.png";
 
 export default function Character(props) {
-  if (props.data) {
-    console.log(true);
-  }
   return (
-    <div className='characterContainer'>
+    <div className='imgContainer'>
+      <div></div>
       <img src={selectCharacter(props.data.name)} alt='' />
     </div>
   );
@@ -18,7 +16,6 @@ export default function Character(props) {
 function selectCharacter(name) {
   let link;
   name = name.toUpperCase();
-  console.log(name);
   switch (name) {
     case "KILO":
       link = kilo;

@@ -1,16 +1,16 @@
 :root {
   --blue: #25a9f5;
   --red: #e6490b;
-  --movementOverlay: #ffbb00;
+  --movementOverlay: #af3eff;
 }
 .cell {
   border: 2px solid white;
   display: inline-flex;
   height: 12vh;
   width: 12vh;
-  content: '';
-  font-family: 'Lucidas Sans', 'Lucida Sans Regular', 'Lucida Grande',
-    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  content: "";
+  font-family: "Lucidas Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 1rem;
   align-items: flex-end;
   justify-content: center;
@@ -35,7 +35,7 @@
   height: 12vh;
   width: 12vh;
   /* opacity: 0.3; */
-  content: '';
+  content: "";
   position: absolute;
   /* background-color: var(--movementOverlay); */
 }
@@ -43,7 +43,7 @@
   height: 12vh;
   width: 12vh;
   opacity: 0.3;
-  content: '';
+  content: "";
   position: absolute;
   background-color: var(--movementOverlay);
 }
@@ -57,16 +57,35 @@
   opacity: 1;
 }
 .gameBoard {
+  overflow: hidden;
   display: inline-block;
   border: 2px solid white;
-  background: url('https://media.istockphoto.com/photos/seamless-modern-handmade-polluted-light-gray-handmade-paper-with-picture-id922759926?k=6&m=922759926&s=612x612&w=0&h=eAyaJuNM_bFpDK5a43fk9D9F9BOCDDy7E0xr9Ht3YV8=');
+  background: url("https://media.istockphoto.com/photos/seamless-modern-handmade-polluted-light-gray-handmade-paper-with-picture-id922759926?k=6&m=922759926&s=612x612&w=0&h=eAyaJuNM_bFpDK5a43fk9D9F9BOCDDy7E0xr9Ht3YV8=");
 }
-.barrier {
-  background-color: grey;
-  opacity: 1;
-  border: 2px solid white;
-}
-div.characterContainer > img {
+
+div.imgContainer > img {
   max-width: 100%;
   max-height: 100%;
+  position: relative;
+}
+.active div.imgContainer > img {
+  filter: drop-shadow(0 0 10px white);
+}
+div.imgContainer > img.barrier {
+  max-height: 100%;
+  max-width: 120%;
+  position: relative;
+  right: 10%;
+}
+div.imgContainer {
+  width: 12vh;
+  height: 12vh;
+}
+.active div.imgContainer > div {
+  background-color: var(--movementOverlay);
+  height: 12vh;
+  width: 12vh;
+  opacity: 1;
+  position: absolute;
+  opacity: 0.75;
 }
