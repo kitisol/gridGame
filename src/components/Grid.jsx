@@ -24,7 +24,7 @@ export default function Grid(props) {
     p2: {
       name: 'Victor',
       id: 'p2',
-      movement: 3,
+      movement: 2,
       team: 'blue',
       location: {
         x: 1,
@@ -56,8 +56,10 @@ export default function Grid(props) {
     barriers: [
       { x: 0, y: 1 },
       { x: 1, y: 1 },
+      { x: 3, y: 2 },
       { x: 2, y: 4 },
       { x: 3, y: 4 },
+      { x: 0, y: 3 },
     ],
     players: players,
     width: 4,
@@ -143,6 +145,8 @@ function findOpenPositions(location, field, range) {
 }
 function checkNear(location, field) {
   const candidates = [];
+  const impassable = [];
+  const team = []
   for (let x_inc = -1; x_inc <= 1; x_inc++) {
     if (location.x + x_inc >= 0 && location.x + x_inc < field.width) {
       const point = { x: location.x + x_inc, y: location.y };
