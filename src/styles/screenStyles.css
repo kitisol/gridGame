@@ -87,10 +87,8 @@
 .content {
   width: calc(100% - 45px);
   margin-top: 7%;
-  overflow-y: scroll;
-  scrollbar-color: #97ebff transparent;
-  scrollbar-width: thin;
 }
+
 .test {
   border: 1px solid cyan;
 }
@@ -103,8 +101,35 @@ svg .complete .outer,
   fill: #45ffff;
 }
 svg .incomplete {
-  fill: #0a5b6d;
-  opacity: 0.55;
+  fill: #fff;
+  opacity: 0.35;
+}
+.battle-list {
+  overflow-y: scroll;
+  scrollbar-color: #97ebff transparent;
+  scrollbar-width: thin;
+}
+.battle-listing {
+  cursor: pointer;
+  opacity: 0.75;
+}
+.battle-listing:hover {
+  opacity: 1;
+}
+.battle-icon {
+  width: 60px;
+  padding: 5px;
+}
+.battle-description {
+  padding: 10px;
+}
+.battle-title {
+  font-weight: bold;
+  font-size: 18px;
+}
+.battle-details {
+  font-size: 14px;
+  text-transform: uppercase;
 }
 
 /* @media screen and (orientation: landscape) {
