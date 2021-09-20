@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import GridBlock from './GridBlock';
 import '../styles/gridStyles.css';
 
-export default function Grid(props) {
+export default function GameBoard(props) {
   const defaultStart = {
     name: undefined,
     movement: -1,
@@ -124,8 +124,8 @@ export default function Grid(props) {
     </div>
   );
 }
-function findOpenPositions(location, field, range) {
-  let candidates = [location];
+function findOpenPositions(origin, field, range) {
+  let candidates = [origin];
   for (let i = 0; i < range; i++) {
     candidates.forEach((candidate) => {
       candidates = candidates.concat(checkNear(candidate, field));
@@ -135,7 +135,7 @@ function findOpenPositions(location, field, range) {
   candidates.forEach((item) => {
     if (
       !locationInList(item, shortList) &&
-      !matchLocation(location, item) &&
+      !matchLocation(origin, item) &&
       !locationInList(item, getAllPlayerLocations(field.players))
     ) {
       shortList.push(item);
@@ -145,8 +145,6 @@ function findOpenPositions(location, field, range) {
 }
 function checkNear(location, field) {
   const candidates = [];
-  const impassable = [];
-  const team = []
   for (let x_inc = -1; x_inc <= 1; x_inc++) {
     if (location.x + x_inc >= 0 && location.x + x_inc < field.width) {
       const point = { x: location.x + x_inc, y: location.y };

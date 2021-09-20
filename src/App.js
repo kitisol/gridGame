@@ -1,10 +1,9 @@
 import './App.css';
-import Grid from './components/Grid';
+import GameBoard from './components/GameBoard';
+import BattleSelect from './screens/BattleSelect';
 
 function App() {
-  return (
-    <Grid></Grid>
-  );
+  return <BattleSelect></BattleSelect>;
 }
 
 export default App;
