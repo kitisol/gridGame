@@ -1,9 +1,11 @@
 .container {
   transition: cubic-bezier(1, 0, 0, 1) 0.2s;
 }
+
 .background {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   position: fixed;
   overflow: auto;
   background: #001819;
@@ -16,7 +18,7 @@
   height: 100vh;
 }
 .background::after {
-  content: '';
+  content: "";
   position: absolute;
   width: calc(100% - 20px);
   height: calc(100% - 90px);
@@ -53,12 +55,11 @@
 .fancyBorderBox {
   z-index: -1;
   position: absolute;
-  margin-bottom: 90px;
   fill: rgba(0, 30, 40, 0.85);
   stroke: #97ebff;
   stroke-width: 0.25;
   width: 90%;
-  max-width: 350px;
+  max-height: 95vh;
 }
 .fancyBorder {
   fill: none !important;
@@ -70,7 +71,7 @@
   color: white;
   width: 90%;
   max-width: 350px;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 .title,
 .subTitle {
@@ -84,20 +85,22 @@
 .subTitle {
   font-size: 1.5rem;
 }
-.content {
-  width: calc(100% - 45px);
+.background .container .content {
   margin-top: 7%;
+  max-height: 100%;
 }
 
 .test {
   border: 1px solid cyan;
 }
 svg .complete .inner,
-.ring .inner {
+.ring .inner,
+svg .secondary {
   fill: #1886a0;
 }
 svg .complete .outer,
-.ring .outer {
+.ring .outer,
+svg .primary {
   fill: #45ffff;
 }
 svg .incomplete {
@@ -110,8 +113,9 @@ svg .incomplete {
   scrollbar-width: thin;
 }
 .battle-listing {
-  cursor: pointer;
+  text-align: left;
   opacity: 0.75;
+  width: 100%;
 }
 .battle-listing:hover {
   opacity: 1;
@@ -131,9 +135,96 @@ svg .incomplete {
   font-size: 14px;
   text-transform: uppercase;
 }
+.rotate-center.left {
+  animation: clockwiseRotate 8s infinite linear;
+  transform-origin: center center;
+}
+.rotate-center.right {
+  animation: counterClockwiseRotate 8s infinite linear;
+  transform-origin: center center;
+}
+.green-icon {
+  fill: #48ff4c;
+}
+.orange-icon {
+  fill: #ffa748;
+}
+.purple-icon {
+  fill: #b748ff;
+}
 
-/* @media screen and (orientation: landscape) {
-  .container {
-    clip-path: polygon(0% 0%, 95% 0%, 100% 5%, 100% 100%, 5% 100%, 0% 95%);
+.bottom-nav {
+  position: fixed;
+  bottom:0px;
+  z-index: 1;
+  background-color: #02121a;
+  opacity: .95;
+  padding:10px;
+}
+.bottom-nav .content {
+  justify-content: space-around;
+  align-content: center;
+  width: 100%;
+}
+.bottom-nav .icon {
+  width: 25%;
+  max-width: 85px;
+  padding: 10px;
+}
+.button-clear{
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+.bottom-nav .icon:hover svg .ring, .bottom-nav .icon:active svg .ring, .battle-listing:hover svg .ring, .battle-listing:active svg .ring{
+  animation: clockwiseRotate 12s infinite linear;
+  transform-origin: center;
+}
+.bottom-nav .icon:hover svg, .bottom-nav .icon:active svg {
+  overflow: visible
+}
+.bottom-nav .text {
+  fill: #ffffff;
+  stroke: #000000;
+  stroke-width: 0.9939;
+  stroke-miterlimit: 10;
+  font-weight: bold;
+  font-size: 30px;
+}
+.transparent {
+  fill: none;
+}
+
+@keyframes clockwiseRotate {
+  from {
+    transform: rotate(0deg);
   }
-} */
+  to {
+    transform: rotate(359deg);
+  }
+}
+@keyframes counterClockwiseRotate {
+  from {
+    transform: rotate(359deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  
+  50% {
+    transform: scale(.85);
+  }
+  
+  100% {
+    transform: scale(1);
+  }
+}
