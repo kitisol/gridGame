@@ -1,0 +1,116 @@
+* {
+  color: whitesmoke;
+}
+.background {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+}
+.background.blue-radial-gradient {
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  filter: blur(50px);
+}
+.fancyBorderBox {
+  z-index: -1;
+  position: absolute;
+  fill: rgba(0, 30, 40, 0.85);
+  stroke: #97ebff;
+  stroke-width: 0.25;
+  width: 90%;
+  max-height: 95vh;
+}
+.fancyBorder {
+  fill: none !important;
+}
+.test {
+  border: 1px solid white;
+}
+.container {
+  display: flex;
+}
+.primary.container {
+  justify-content: center;
+  margin-top: 20px;
+}
+.content.container {
+  flex-direction: column;
+}
+.title,
+.subTitle {
+  text-align: center;
+}
+.title {
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: -0.5rem;
+}
+.subTitle {
+  font-size: 1.5rem;
+}
+.content.container div.header {
+  font-weight: bold;
+  padding: 2%;
+  margin: 4% 2% 1% 2%;
+}
+.content.container div.body {
+  flex: 1;
+  overflow-y: scroll;
+  scrollbar-color: #97ebff transparent;
+  scrollbar-width: thin;
+  padding: 2%;
+  margin: 1% 2%;
+}
+.battle-list {
+  overflow-y: scroll;
+  scrollbar-color: #97ebff transparent;
+  scrollbar-width: thin;
+}
+.battle-listing {
+  text-align: left;
+  opacity: 0.75;
+  width: 100%;
+}
+.battle-listing:hover {
+  opacity: 1;
+}
+.battle-icon {
+  width: 60px;
+  padding: 5px;
+}
+.battle-description {
+  border: 1px solid white;
+}
+.battle-text {
+  flex: 1;
+  padding: 10px;
+}
+.battle-title {
+  font-weight: bold;
+  font-size: 18px;
+}
+.battle-details {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.bottom-nav {
+  position: fixed;
+  bottom: 0px;
+  z-index: 1;
+  background-color: #02121a;
+  opacity: 0.95;
+  padding: 10px;
+}
+.bottom-nav .content {
+  justify-content: space-around;
+  align-content: center;
+  width: 100%;
+}
+.bottom-nav .icon {
+  width: 25%;
+  max-width: 85px;
+  padding: 10px;
+}
